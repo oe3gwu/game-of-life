@@ -19,7 +19,6 @@ Conway’s Game of Life (2D) und Millen/BYTE 1D-Life — als Python-Terminal-App
 - C16 / Plus4: [`c16/1d_game_of_life.bas`](c16/1d_game_of_life.bas)
 - C128 VIC-II: [`c128/1d_game_of_life_vic2-40.bas`](c128/1d_game_of_life_vic2-40.bas)
 - C128 VDC: [`c128/1d_game_of_life_vdc-80.bas`](c128/1d_game_of_life_vdc-80.bas)
-- MEGA65: [`mega65/1d_game_of_life_80.bas`](mega65/1d_game_of_life_80.bas)
 
 Die BASIC-Ports sind langsam.
 
