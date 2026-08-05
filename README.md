@@ -4,16 +4,24 @@ Conway’s Game of Life (2D) und Millen/BYTE 1D-Life — als Python-Terminal-App
 
 ## Programme
 
-| Plattform | 2D | 1D | Raster | Hinweise |
-|-----------|----|----|--------|----------|
-| PC | [`pc/2d_game_of_life.py`](pc/2d_game_of_life.py) | — | Terminalgröße | Editor, Muster, mehrere Regelwerke |
-| C64 | [`c64/2d_game_of_life.bas`](c64/2d_game_of_life.bas) | [`c64/1d_game_of_life.bas`](c64/1d_game_of_life.bas) | 40×23 | 2D in BASIC extrem langsam |
-| C16 / Plus4 | [`c16/2d_game_of_life.bas`](c16/2d_game_of_life.bas) | [`c16/1d_game_of_life.bas`](c16/1d_game_of_life.bas) | 40×23 | TED; Boot-Lila (`COLOR 1,15,6`) |
-| C128 VIC-II | [`c128/2d_game_of_life_vic2-40.bas`](c128/2d_game_of_life_vic2-40.bas) | [`c128/1d_game_of_life_vic2-40.bas`](c128/1d_game_of_life_vic2-40.bas) | 40×23 | Nur 40 Spalten; `SLOW` (nicht `FAST`) |
-| C128 VDC | [`c128/2d_game_of_life_vdc-80.bas`](c128/2d_game_of_life_vdc-80.bas) | [`c128/1d_game_of_life_vdc-80.bas`](c128/1d_game_of_life_vdc-80.bas) | 80×23 | `FAST`; Emulator: 80col/VDC-Fenster |
-| MEGA65 | [`mega65/2d_game_of_life_80.bas`](mega65/2d_game_of_life_80.bas) | [`mega65/1d_game_of_life_80.bas`](mega65/1d_game_of_life_80.bas) | 80×23 | Hardware getestet (`SPEED`, `T@&`); auch als [`.prg`](mega65/2d_game_of_life_80.prg) / [`.d81`](mega65/2d_game_of_life.d81) |
+### 2D
 
-Auf C64/C16/C128 ist 2D-Life in reinem BASIC praktisch nur als Demo nutzbar. MEGA65 läuft mit `SPEED` brauchbar.
+- PC: [`pc/2d_game_of_life.py`](pc/2d_game_of_life.py)
+- C64: [`c64/2d_game_of_life.bas`](c64/2d_game_of_life.bas)
+- C16 / Plus4: [`c16/2d_game_of_life.bas`](c16/2d_game_of_life.bas)
+- C128 VIC-II: [`c128/2d_game_of_life_vic2-40.bas`](c128/2d_game_of_life_vic2-40.bas)
+- C128 VDC: [`c128/2d_game_of_life_vdc-80.bas`](c128/2d_game_of_life_vdc-80.bas)
+- MEGA65: [`mega65/2d_game_of_life_80.bas`](mega65/2d_game_of_life_80.bas) ([`.prg`](mega65/2d_game_of_life_80.prg), [`.d81`](mega65/2d_game_of_life.d81))
+
+### 1D
+
+- C64: [`c64/1d_game_of_life.bas`](c64/1d_game_of_life.bas)
+- C16 / Plus4: [`c16/1d_game_of_life.bas`](c16/1d_game_of_life.bas)
+- C128 VIC-II: [`c128/1d_game_of_life_vic2-40.bas`](c128/1d_game_of_life_vic2-40.bas)
+- C128 VDC: [`c128/1d_game_of_life_vdc-80.bas`](c128/1d_game_of_life_vdc-80.bas)
+- MEGA65: [`mega65/1d_game_of_life_80.bas`](mega65/1d_game_of_life_80.bas)
+
+Die BASIC-Ports sind langsam.
 
 ## Regeln (BASIC-Ports)
 
@@ -43,13 +51,6 @@ Interaktiver Editor: Musterbibliothek, Regelwerke (B/S), Torus, Zellalter, Stati
 ## Commodore / MEGA65
 
 BASIC-Quellen laden und `RUN`. Emulatoren: VICE (`x64`, `xplus4`, `x128`), für MEGA65 die passende Runtime bzw. Hardware.
-
-Plattformspezifisch:
-
-- **C128 VIC-II:** `SLOW` behalten — `FAST` macht den VIC-Screen schwarz.
-- **C128 VDC:** zuerst 80-Spalten-/VDC-Fenster, dann laden.
-- **C16:** Screen `3072`, Color `2048`.
-- **MEGA65:** schaltet bei Bedarf auf 80 Spalten; Diskimage enthält das 2D-Programm.
 
 ## Lizenz
 
