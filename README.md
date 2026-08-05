@@ -7,15 +7,15 @@
 | Plattform | Programm | Beschreibung |
 |-----------|----------|--------------|
 | PC | [2D Game of Life](pc/2d_game_of_life.py) | Terminal-Editor, Muster, mehrere Regelwerke |
-| C64 | [2D Game of Life](c64/2d_game_of_life.bas) | 40×23; **extrem langsam** (reines BASIC) |
+| C64 | [2D Game of Life](c64/2d_game_of_life.bas) | 40×23; **extrem langsam** |
 | C64 | [1D Game of Life](c64/1d_game_of_life.bas) | Millen/BYTE 1D-Life, Evolution-Ansicht |
-| C16 | [2D Game of Life](c16/2d_game_of_life.bas) | TED; **extrem langsam**; schwarz + Boot-Lila |
+| C16 | [2D Game of Life](c16/2d_game_of_life.bas) | TED; **extrem langsam** |
 | C16 | [1D Game of Life](c16/1d_game_of_life.bas) | Millen/BYTE 1D-Life, Evolution-Ansicht |
 | C128 | [2D Game of Life (VIC-II)](c128/2d_game_of_life_vic2-40.bas) | 40 Spalten; **extrem langsam** |
 | C128 | [1D Game of Life (VIC-II)](c128/1d_game_of_life_vic2-40.bas) | 1D-Life, 40 Spalten VIC-II |
 | C128 | [2D Game of Life (VDC)](c128/2d_game_of_life_vdc-80.bas) | 80 Spalten VDC; **extrem langsam** |
 | C128 | [1D Game of Life (VDC)](c128/1d_game_of_life_vdc-80.bas) | 1D-Life, 80 Spalten VDC |
-| MEGA65 | [2D Game of Life](mega65/2d_game_of_life_80.bas) | 80×25 Text; **auf Hardware getestet** |
+| MEGA65 | [2D Game of Life](mega65/2d_game_of_life_80.bas) | 80 Spalten; **auf Hardware getestet** |
 | MEGA65 | [1D Game of Life](mega65/1d_game_of_life_80.bas) | 1D-Life, 80 Spalten, Evolution-Ansicht |
 
 ## Verzeichnisstruktur
