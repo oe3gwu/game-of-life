@@ -1,102 +1,55 @@
 # game-of-life
 
-**Conway’s Game of Life** und **1D Life** (Millen/BYTE) — PC (Python/`curses`) sowie Commodore-BASIC-Ports (C64, C16/Plus4, C128, MEGA65).
+Conway’s Game of Life (2D) und Millen/BYTE 1D-Life — als Python-Terminal-App und Commodore-BASIC-Ports (C64, C16/Plus4, C128, MEGA65).
 
-## Übersicht
+## Programme
 
-| Plattform | Programm | Beschreibung |
-|-----------|----------|--------------|
-| PC | [2D Game of Life](pc/2d_game_of_life.py) | Terminal-Editor, Muster, mehrere Regelwerke |
-| C64 | [2D Game of Life](c64/2d_game_of_life.bas) | 40×23; **extrem langsam** |
-| C64 | [1D Game of Life](c64/1d_game_of_life.bas) | Millen/BYTE 1D-Life, Evolution-Ansicht |
-| C16 | [2D Game of Life](c16/2d_game_of_life.bas) | TED; **extrem langsam** |
-| C16 | [1D Game of Life](c16/1d_game_of_life.bas) | Millen/BYTE 1D-Life, Evolution-Ansicht |
-| C128 | [2D Game of Life (VIC-II)](c128/2d_game_of_life_vic2-40.bas) | 40 Spalten; **extrem langsam** |
-| C128 | [1D Game of Life (VIC-II)](c128/1d_game_of_life_vic2-40.bas) | 1D-Life, 40 Spalten VIC-II |
-| C128 | [2D Game of Life (VDC)](c128/2d_game_of_life_vdc-80.bas) | 80 Spalten VDC; **extrem langsam** |
-| C128 | [1D Game of Life (VDC)](c128/1d_game_of_life_vdc-80.bas) | 1D-Life, 80 Spalten VDC |
-| MEGA65 | [2D Game of Life](mega65/2d_game_of_life_80.bas) | 80 Spalten; **auf Hardware getestet** |
-| MEGA65 | [1D Game of Life](mega65/1d_game_of_life_80.bas) | 1D-Life, 80 Spalten, Evolution-Ansicht |
+| Plattform | 2D | 1D | Raster | Hinweise |
+|-----------|----|----|--------|----------|
+| PC | [`pc/2d_game_of_life.py`](pc/2d_game_of_life.py) | — | Terminalgröße | Editor, Muster, mehrere Regelwerke |
+| C64 | [`c64/2d_game_of_life.bas`](c64/2d_game_of_life.bas) | [`c64/1d_game_of_life.bas`](c64/1d_game_of_life.bas) | 40×23 | 2D in BASIC extrem langsam |
+| C16 / Plus4 | [`c16/2d_game_of_life.bas`](c16/2d_game_of_life.bas) | [`c16/1d_game_of_life.bas`](c16/1d_game_of_life.bas) | 40×23 | TED; Boot-Lila (`COLOR 1,15,6`) |
+| C128 VIC-II | [`c128/2d_game_of_life_vic2-40.bas`](c128/2d_game_of_life_vic2-40.bas) | [`c128/1d_game_of_life_vic2-40.bas`](c128/1d_game_of_life_vic2-40.bas) | 40×23 | Nur 40 Spalten; `SLOW` (nicht `FAST`) |
+| C128 VDC | [`c128/2d_game_of_life_vdc-80.bas`](c128/2d_game_of_life_vdc-80.bas) | [`c128/1d_game_of_life_vdc-80.bas`](c128/1d_game_of_life_vdc-80.bas) | 80×23 | `FAST`; Emulator: 80col/VDC-Fenster |
+| MEGA65 | [`mega65/2d_game_of_life_80.bas`](mega65/2d_game_of_life_80.bas) | [`mega65/1d_game_of_life_80.bas`](mega65/1d_game_of_life_80.bas) | 80×23 | Hardware getestet (`SPEED`, `T@&`); auch als [`.prg`](mega65/2d_game_of_life_80.prg) / [`.d81`](mega65/2d_game_of_life.d81) |
 
-## Verzeichnisstruktur
+Auf C64/C16/C128 ist 2D-Life in reinem BASIC praktisch nur als Demo nutzbar. MEGA65 läuft mit `SPEED` brauchbar.
 
-```
-game-of-life/
-├── README.md
-├── pc/
-│   └── 2d_game_of_life.py        # Python 3 / curses
-├── c64/
-│   ├── 2d_game_of_life.bas
-│   └── 1d_game_of_life.bas
-├── c16/
-│   ├── 2d_game_of_life.bas
-│   └── 1d_game_of_life.bas
-├── c128/
-│   ├── 2d_game_of_life_vic2-40.bas
-│   ├── 1d_game_of_life_vic2-40.bas
-│   ├── 2d_game_of_life_vdc-80.bas
-│   └── 1d_game_of_life_vdc-80.bas
-└── mega65/
-    ├── 2d_game_of_life_80.bas
-    ├── 1d_game_of_life_80.bas
-    ├── 2d_game_of_life_80.prg
-    └── 2d_game_of_life.d81
-```
+## Regeln (BASIC-Ports)
 
----
+**2D — Conway B3/S23:** Simultanes Update (Doppelpuffer), Zufallsstart 15–20 % plus zwei Glider. Statuszeile `POP` / `GEN`. Neustart nach 20 Generationen.
 
-## Regeln
+**1D — Millen/BYTE-Life** ([jonmillen.com/1dlife](https://jonmillen.com/1dlife/index.html)): Nachbarschaft `YYXYY` (Geburt bei 2\|3, Überleben bei 2\|4 Y-Nachbarn), Wrap-Ring, Evolution-Ansicht (jede Generation eine Zeile). Seed 28–35 %. Status `POP` / `SEED` / `GEN`. Neustart nach 20 Generationen.
 
-**2D:** Conway B3/S23, simultanes Update (Doppelpuffer), Zufallsstart **15–20 %** plus zwei Glider; Status `POP`/`GEN`; Neustart nach **20** Gen. Auf C64/C16/C128 **extrem langsam**; auf dem **MEGA65 getestet** (`SPEED`).
+## PC
 
-**1D:** Millen/BYTE-Life ([jonmillen.com/1dlife](https://jonmillen.com/1dlife/index.html)), Nachbarschaft `YYXYY`, Evolution-Ansicht (jede Gen. eine Zeile), Wrap-Ring, Seed **28–35 %**, Status `POP` / `SEED` / `GEN`, Neustart nach **20** Gen.
-
----
-
-## PC — `pc/2d_game_of_life.py`
-
-Python 3.8+, `curses` (unter Windows: `pip install windows-curses`).
+Python 3.8+, `curses` (Windows: `pip install windows-curses`).
 
 ```bash
 python3 pc/2d_game_of_life.py
 ```
 
-Editor, Musterbibliothek, Regelwerke (B/S), Torus, Zellalter, Statistik. Wichtige Tasten: Leertaste Pause, `.`/`N` Schritt, `P` Muster, `O` Regeln, `Q`/ESC Ende — Hilfe mit `H`/`?`.
+Interaktiver Editor: Musterbibliothek, Regelwerke (B/S), Torus, Zellalter, Statistik. Raster folgt der Terminalgröße. Hilfe im Programm mit `H` / `?`.
 
----
+| Taste | Aktion |
+|-------|--------|
+| Leertaste | Pause / Weiter |
+| `.` / `N` | Ein Schritt |
+| `P` / `[` `]` | Muster platzieren / wählen |
+| `O` | Regelwerk wechseln |
+| `T` | Torus an/aus |
+| `Q` / ESC | Beenden |
 
-## Commodore / MEGA65 (BASIC)
+## Commodore / MEGA65
 
-### C64
+BASIC-Quellen laden und `RUN`. Emulatoren: VICE (`x64`, `xplus4`, `x128`), für MEGA65 die passende Runtime bzw. Hardware.
 
-- 2D: [`c64/2d_game_of_life.bas`](c64/2d_game_of_life.bas) — 40×23, POKE Screen/`55296`, **extrem langsam**
-- 1D: [`c64/1d_game_of_life.bas`](c64/1d_game_of_life.bas) — Evolution-Ansicht
-- **VICE:** `x64`, laden, `RUN`
+Plattformspezifisch:
 
-### C16 / Plus/4
-
-- 2D/1D unter [`c16/`](c16/) — TED `3072`/`2048`, Boot-Lila (`COLOR 1,15,6`)
-- **VICE:** `xplus4` oder C16, laden, `RUN`
-
-### C128 — VIC-II 40 Spalten
-
-- [`c128/2d_game_of_life_vic2-40.bas`](c128/2d_game_of_life_vic2-40.bas) — **extrem langsam**
-- [`c128/1d_game_of_life_vic2-40.bas`](c128/1d_game_of_life_vic2-40.bas)
-- Nur 40-Spalten-VIC; **`SLOW`** (nicht `FAST` — sonst schwarzer VIC-Screen)
-
-### C128 — VDC 80 Spalten
-
-- [`c128/2d_game_of_life_vdc-80.bas`](c128/2d_game_of_life_vdc-80.bas) — **extrem langsam**
-- [`c128/1d_game_of_life_vdc-80.bas`](c128/1d_game_of_life_vdc-80.bas)
-- FAST; VICE: zuerst **80col / VDC-Fenster**
-
-### MEGA65
-
-- 2D: [`mega65/2d_game_of_life_80.bas`](mega65/2d_game_of_life_80.bas) — **funktioniert auf Hardware**; `SPEED`, `T@&`
-- 1D: [`mega65/1d_game_of_life_80.bas`](mega65/1d_game_of_life_80.bas)
-- Disk: [`mega65/2d_game_of_life.d81`](mega65/2d_game_of_life.d81) / [`mega65/2d_game_of_life_80.prg`](mega65/2d_game_of_life_80.prg)
-
----
+- **C128 VIC-II:** `SLOW` behalten — `FAST` macht den VIC-Screen schwarz.
+- **C128 VDC:** zuerst 80-Spalten-/VDC-Fenster, dann laden.
+- **C16:** Screen `3072`, Color `2048`.
+- **MEGA65:** schaltet bei Bedarf auf 80 Spalten; Diskimage enthält das 2D-Programm.
 
 ## Lizenz
 
