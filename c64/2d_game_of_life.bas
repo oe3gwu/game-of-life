@@ -6,7 +6,6 @@
 13 slb=sc+23*40:sl2=sc+24*40:clb=cr+23*40:cl2=cr+24*40
 14 maxg=20:pf=920
 30 gosub 600
-35 gosub 700
 40 g=0
 50 pop=0:for y=1 to 23:i0=y*w:for x=1 to 40:pop=pop+c(i0+x):next x:next y
 55 gosub 1000
